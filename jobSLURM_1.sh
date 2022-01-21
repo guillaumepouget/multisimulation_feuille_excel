@@ -5,7 +5,6 @@
 #SBATCH --error=multi1_%A.err # Name of the stderr file (sortie standard des erreurs de OGE)
 #SBATCH --job-name=multi1 # Name of this Job in the qstat output (can be anything … sample string)
 
-#test3
 
 ### TO BE LAUNCHED USING sbatch --nodes=1 --cpus-per-task=1 jobSLURM_1.sh
 
