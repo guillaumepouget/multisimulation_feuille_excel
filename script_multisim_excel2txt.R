@@ -8,7 +8,7 @@
 # - stics_version: the Stics version used (use get_stics_versions_compat() to know the full list of stics versions that can be used)
 # - javastics_path: the Javastics folder
 
-# then this script executes uses the content of the excel sheet and the templates to produce the xml files necessary for Stics: usms.xml, sols.xml, 
+# then this script uses the content of the excel sheet and the templates to produce the xml files necessary for Stics: usms.xml, sols.xml, 
 # and the ini, tec, station xml files 
 # after that the script generates the txt usms from the xml files
 
