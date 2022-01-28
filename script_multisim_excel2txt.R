@@ -23,6 +23,9 @@ if ((!exists("rep_multisimu")) | (!exists("stics_version")) | (!exists("javastic
 library(SticsRFiles)
 library(SticsOnR)
 
+#store the content of the xml dir before generation of the xml and txt files
+contenu_xml_dir_avant=dir(file.path(rep_multisimu, "xml"))
+
 #path of the excel sheet
 usm_xl_file = file.path(rep_multisimu, list.files(path = rep_multisimu, pattern = "*.xlsx$"))
 
@@ -118,4 +121,10 @@ workspace_path = file.path(rep_multisimu, "xml")
 output_path = file.path(rep_multisimu, "output")
 
 gen_usms_xml2txt(javastics_path = javastics_path, workspace_path = workspace_path, target_path = output_path)
+
+#erase the files created in the xml directory during the process of the generation of txt usms
+contenu_xml_dir_apres=dir(file.path(rep_multisimu, "xml"))
+diff_xml_dir=setdiff(contenu_xml_dir_apres, contenu_xml_dir_avant)
+setwd(file.path(rep_multisimu, "xml"))
+file.remove(diff_xml_dir)
 
