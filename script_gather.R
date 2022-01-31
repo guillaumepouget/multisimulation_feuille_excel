@@ -30,10 +30,15 @@ attr(liste_totale$sim_list, "class")= "cropr_simulation"
 save(liste_totale, file = file.path(rep_output, paste0("results_final.Rdata")))
 
 #erase all the files in the output directory except the final list "results_final.Rdata"
-contenu_output_dir_apres=dir(file.path(rep_multisimu, "output"))
-contenu_output_dir_apres=contenu_output_dir_apres[!grepl("\\.Rdata$", contenu_output_dir_apres)]
-setwd(file.path(rep_multisimu, "output"))
-unlink(contenu_output_dir_apres, recursive = TRUE)
-contenu_output_dir_apres=dir(file.path(rep_multisimu, "output"))
-contenu_output_dir_apres=contenu_output_dir_apres[-which(contenu_output_dir_apres == "results_final.Rdata")]
-file.remove(contenu_output_dir_apres)
+
+if (option_effacement_fichiers == "oui"){
+
+  contenu_output_dir_apres=dir(file.path(rep_multisimu, "output"))
+  contenu_output_dir_apres=contenu_output_dir_apres[!grepl("\\.Rdata$", contenu_output_dir_apres)]
+  setwd(file.path(rep_multisimu, "output"))
+  unlink(contenu_output_dir_apres, recursive = TRUE)
+  contenu_output_dir_apres=dir(file.path(rep_multisimu, "output"))
+  contenu_output_dir_apres=contenu_output_dir_apres[-which(contenu_output_dir_apres == "results_final.Rdata")]
+  file.remove(contenu_output_dir_apres)
+
+}

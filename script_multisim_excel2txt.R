@@ -122,9 +122,17 @@ output_path = file.path(rep_multisimu, "output")
 
 gen_usms_xml2txt(javastics_path = javastics_path, workspace_path = workspace_path, target_path = output_path)
 
-#erase the files created in the xml directory during the process of the generation of txt usms
-contenu_xml_dir_apres=dir(file.path(rep_multisimu, "xml"))
-diff_xml_dir=setdiff(contenu_xml_dir_apres, contenu_xml_dir_avant)
-setwd(file.path(rep_multisimu, "xml"))
-file.remove(diff_xml_dir)
+#erase the files created in the xml directory during the process of generation of txt usms
+
+if (option_effacement_fichiers == "oui"){
+  
+  contenu_xml_dir_apres=dir(file.path(rep_multisimu, "xml"))
+  diff_xml_dir=setdiff(contenu_xml_dir_apres, contenu_xml_dir_avant)
+  setwd(file.path(rep_multisimu, "xml"))
+  file.remove(diff_xml_dir)
+  
+}
+
+#erase the files created in the xml directory during the process of generation of txt usms
+
 
