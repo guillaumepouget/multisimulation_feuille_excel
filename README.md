@@ -5,7 +5,7 @@ Variables to be defined in the beginning of script_windows.R :
 - rep_multisimu: directory containing 
 1. the excel sheet (name should be: *.xlsx), 
 2. a "xml" directory containing 1/ a plant directory itself containing the plant files whose name should end with "_plt.xml", 2/ the climate files, 3/ potentially *_ini.xml, *_tec.xml, *_sta.xml, sols.xml files if one have these files available and one doesn't want to regenerate them with the excel sheet -> in this case, for example if one provides the file(s) *_sta.xml, one should not include any "Station" worksheet on the excel sheet
-3. a "templates" directory containing (if wanted) the desired xml templates (names of the templates should be: *sol.xml, *tec.xml, *ini.xml, *sta.xml)
+3. a "templates" directory containing (if wanted) the desired xml templates (names of the templates should be: *sol.xml, *tec.xml, *ini.xml, *sta.xml, *usm.xml)
 4. an "output" directory in which the txt usms will be created from the different xml files
 - stics_version: the Stics version used (use get_stics_versions_compat() to know the full list of stics versions that can be used)
 - javastics_path: the Javastics folder
