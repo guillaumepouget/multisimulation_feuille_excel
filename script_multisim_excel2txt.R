@@ -3,7 +3,7 @@
 # - rep_multisimu: directory containing 
 #   * the excel sheet (name should be: *.xlsx), 
 #   * a "xml" directory containing 1/ a plant directory itself containing the plant files whose name should end with "_plt.xml", 2/ the climate files, 
-#   * a "templates" directory containing (if wanted) the desired xml templates (names of the templates should be: *sol.xml, *tec.xml, *ini.xml, *sta.xml)
+#   * a "templates" directory containing (if wanted) the desired xml templates (names of the templates should be: *sol.xml, *tec.xml, *ini.xml, *sta.xml, *usm.xml)
 #   * an "output" directory in which the txt usms will be created from the different xml files
 # - stics_version: the Stics version used (use get_stics_versions_compat() to know the full list of stics versions that can be used)
 # - javastics_path: the Javastics folder
@@ -36,9 +36,19 @@ path_templates=file.path(rep_multisimu, "templates")
 usms_param = read_params_table(usm_xl_file, sheet_name = "USMs", num_na = "NA")
 
 if (!is.null(usms_param)){
-
+  
   usms_out_file = paste0(rep_multisimu, "/xml/usms.xml")
-  gen_usms_xml(usms_out_file = usms_out_file, usms_param = usms_param, stics_version = stics_version)
+  
+  if (length(list.files(path = path_templates, pattern = "*usm.xml$")) > 0){
+    
+    usms_in_file=file.path(path_templates, list.files(path = path_templates, pattern = "*usm.xml$"))
+    gen_usms_xml(usms_out_file = usms_out_file, usms_param = usms_param, usms_in_file = usms_in_file)
+    
+  }else{
+    
+    gen_usms_xml(usms_out_file = usms_out_file, usms_param = usms_param, stics_version = stics_version)
+    
+  }
 
 }
 
