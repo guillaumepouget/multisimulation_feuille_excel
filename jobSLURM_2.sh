@@ -6,7 +6,7 @@
 #SBATCH --job-name=multi2 # Name of this Job in the qstat output (can be anything … sample string)
 
 
-### TO BE LAUNCHED USING sbatch --array=1-2 --nodes=1 --cpus-per-task=7 jobSLURM.sh
+### TO BE LAUNCHED USING sbatch --array=1-2 --nodes=1 --cpus-per-task=7 jobSLURM_2.sh
 
 ml R/4.0.0
 
