@@ -13,5 +13,6 @@ ml R/4.0.0
 echo $1
 echo $2
 echo $3
+echo $4
 
-Rscript script_gather.R rep_multisimu=$1 ncoeurs=$2 option_effacement_fichiers=$3
+Rscript script_gather.R rep_multisimu=$1 ncoeurs=$2 option_effacement_fichiers=$3 option_aucun_effacement=$4

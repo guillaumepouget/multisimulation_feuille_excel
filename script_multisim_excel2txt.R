@@ -130,11 +130,15 @@ if (!is.null(sta_param)){
 workspace_path = file.path(rep_multisimu, "xml")
 output_path = file.path(rep_multisimu, "output")
 
+#erase all the files eventually contained in the output directory, create a new and empty output directory
+unlink(output_path, recursive = TRUE)
+dir.create(output_path)
+
 gen_usms_xml2txt(javastics_path = javastics_path, workspace_path = workspace_path, target_path = output_path)
 
 #erase the files created in the xml directory during the process of generation of txt usms
 
-if (option_effacement_fichiers == "oui"){
+if (option_aucun_effacement == "non"){
   
   contenu_xml_dir_apres=dir(file.path(rep_multisimu, "xml"))
   diff_xml_dir=setdiff(contenu_xml_dir_apres, contenu_xml_dir_avant)
@@ -143,6 +147,5 @@ if (option_effacement_fichiers == "oui"){
   
 }
 
-#erase the files created in the xml directory during the process of generation of txt usms
 
 
