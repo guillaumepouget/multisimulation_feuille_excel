@@ -31,7 +31,7 @@ save(liste_totale, file = file.path(rep_output, paste0("results_final.Rdata")))
 
 #erase all the files in the output directory except the final list "results_final.Rdata"
 
-if ((option_effacement_fichiers == "oui") | (option_aucun_effacement == "non") ){
+if ((option_effacement_output == "oui") & (option_aucun_effacement == "non") ){
 
   contenu_output_dir_apres=dir(file.path(rep_multisimu, "output"))
   contenu_output_dir_apres=contenu_output_dir_apres[!grepl("\\.Rdata$", contenu_output_dir_apres)]
