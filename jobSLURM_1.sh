@@ -13,6 +13,5 @@ ml R/4.0.0
 echo $1
 echo $2
 echo $3
-echo $4
 
-Rscript script_multisim_excel2txt.R rep_multisimu=$1 stics_version=$2 javastics_path=$3 option_aucun_effacement=$4
+Rscript script_multisim_excel2txt.R rep_multisimu=$1 stics_version=$2 javastics_path=$3

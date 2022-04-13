@@ -17,6 +17,7 @@
 if ( (!exists("rep_multisimu")) | (!exists("javastics_path")) | (!exists("var_names")) | (!exists("ncoeurs")) | (!exists("i")) ) {
   args = commandArgs(trailingOnly=TRUE)
   eval(parse(text=args))
+  load(file.path(rep_multisimu, "variables.Rdata"))
 }
   
 #loading the Stics R packages
@@ -24,7 +25,7 @@ library(SticsRFiles)
 library(SticsOnR)
 
 #executing Stics on the txt usms for the job number i, the results are stored in the results variable
-output_path = file.path(rep_multisimu, "output")
+#output_path = file.path(rep_multisimu, "output")
 workspace_path = file.path(rep_multisimu, "xml")
 
 liste_usms=get_usms_list(usm_path = file.path(workspace_path, "usms.xml"))
@@ -47,8 +48,12 @@ if (reste == 0){
   
 }
 
-sim_options = stics_wrapper_options(javastics_path = javastics_path, data_dir = output_path, verbose = FALSE)
+sim_options = stics_wrapper_options(javastics_path = javastics_path, data_dir = file.path(output_path, "usms"), verbose = FALSE)
 results = stics_wrapper(model_options = sim_options, sit_names = liste_usms_interet, var_names = var_names)
 
 #return(results)}
 save(results, file = file.path(output_path, paste0("results_",i,".Rdata")))
+
+#erase the files created in the xml directory during the process of generation of txt usms
+setwd(file.path(rep_multisimu, "xml"))
+file.remove(diff_xml_dir)

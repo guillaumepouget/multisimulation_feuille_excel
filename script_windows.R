@@ -5,8 +5,7 @@ stics_version="V9.1"
 javastics_path=  "D:/Home/gpouget/Documents/Stics/Stics_v8.5_v9.1_originales/JavaSTICS-1.41-stics-9.1"
 var_names=c("masec_n","mafruit")
 ncoeurs=1
-option_effacement_output="oui"
-option_aucun_effacement="non"
+option_effacement="non"
 
 path_scripts="D:/Home/gpouget/Documents/Stics/fonction feuille excel/programmes_v4/multisimulation_feuille_excel"
 

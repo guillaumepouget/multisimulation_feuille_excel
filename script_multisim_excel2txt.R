@@ -128,24 +128,34 @@ if (!is.null(sta_param)){
 
 #generating the txt usms from the xml files
 workspace_path = file.path(rep_multisimu, "xml")
-output_path = file.path(rep_multisimu, "output")
 
-#erase all the files eventually contained in the output directory, create a new and empty output directory
-unlink(output_path, recursive = TRUE)
+#create a new and empty output directory
+time = Sys.time()
+date = paste0(substr(x = time, start = 1, stop = 4), substr(x = time, start = 6, stop = 7), substr(x = time, start = 9, stop = 10))
+heure = paste0(substr(x = time, start = 12, stop = 13), substr(x = time, start = 15, stop = 16), substr(x = time, start = 18, stop = 19))
+output_path = file.path(rep_multisimu, "output", paste0("SIMU_", date, "_", heure))
 dir.create(output_path)
 
-gen_usms_xml2txt(javastics_path = javastics_path, workspace_path = workspace_path, target_path = output_path)
+dir.create(file.path(output_path, "usms"))
 
-#erase the files created in the xml directory during the process of generation of txt usms
+gen_usms_xml2txt(javastics_path = javastics_path, workspace_path = workspace_path, target_path = file.path(output_path, "usms"))
 
-if (option_aucun_effacement == "non"){
+#copy excel sheet, templates directory, xml directory in output_path
+
+file.copy(from = usm_xl_file, to = output_path)
+
+file.copy(from = file.path(rep_multisimu, "templates"), to = output_path, recursive = TRUE, overwrite = TRUE)
   
-  contenu_xml_dir_apres=dir(file.path(rep_multisimu, "xml"))
-  diff_xml_dir=setdiff(contenu_xml_dir_apres, contenu_xml_dir_avant)
-  setwd(file.path(rep_multisimu, "xml"))
-  file.remove(diff_xml_dir)
-  
-}
+contenu_xml_dir_apres = dir(file.path(rep_multisimu, "xml"))
+diff_xml_dir=setdiff(contenu_xml_dir_apres, contenu_xml_dir_avant)
+file.copy(from = file.path(rep_multisimu, "xml"), to = output_path, recursive = TRUE, overwrite = TRUE)
+
+#save variables used in the next scripts in linux case
+save(output_path, diff_xml_dir, file = file.path(rep_multisimu, "variables.Rdata"))
+
+
+
+
 
 
 

@@ -10,9 +10,10 @@
 if ( (!exists("ncoeurs")) | (!exists("rep_multisimu")) ) {
   args = commandArgs(trailingOnly=TRUE)
   eval(parse(text=args))
+  load(file.path(rep_multisimu, "variables.Rdata"))
 }
 
-rep_output=file.path(rep_multisimu, "output")
+rep_output = output_path
 
 liste_totale=list(error=FALSE,sim_list=NULL)
   
@@ -27,19 +28,25 @@ liste_totale=list(error=FALSE,sim_list=NULL)
 
 attr(liste_totale$sim_list, "class")= "cropr_simulation"
 
-save(liste_totale, file = file.path(rep_output, paste0("results_final.Rdata")))
+save(liste_totale, file = file.path(rep_output, "results_final.Rdata"))
 
 #erase all the files in the output directory except the final list "results_final.Rdata"
 
-if ((option_effacement_output == "oui") & (option_aucun_effacement == "non") ){
+if (option_effacement == "oui"){
 
-  contenu_output_dir_apres=dir(file.path(rep_multisimu, "output"))
-  contenu_output_dir_apres=contenu_output_dir_apres[!grepl("\\.Rdata$", contenu_output_dir_apres)]
-  setwd(file.path(rep_multisimu, "output"))
-  unlink(contenu_output_dir_apres, recursive = TRUE)
-  
-  contenu_output_dir_apres=dir(file.path(rep_multisimu, "output"))
-  contenu_output_dir_apres=contenu_output_dir_apres[-which(contenu_output_dir_apres == "results_final.Rdata")]
-  file.remove(contenu_output_dir_apres)
+#erase directories
+contenu_output_dir_apres=dir(output_path)
+contenu_output_dir_apres=contenu_output_dir_apres[!grepl("\\.Rdata$", contenu_output_dir_apres)]
+setwd(output_path)
+unlink(contenu_output_dir_apres, recursive = TRUE)
+
+#erase files except the results  
+contenu_output_dir_apres=dir(output_path)
+contenu_output_dir_apres=contenu_output_dir_apres[-which(contenu_output_dir_apres == "results_final.Rdata")]
+setwd(output_path)
+file.remove(contenu_output_dir_apres, recursive = TRUE)
 
 }
+
+setwd(rep_multisimu)
+file.remove("variables.Rdata")
