@@ -15,8 +15,6 @@ Variables to be defined in the beginning of script_windows.R :
 
 Then these scripts use the content of the excel sheet and the templates to produce the xml files necessary for Stics: usms.xml, sols.xml, and the ini, tec, station xml files
 
-After that the scripts generate the txt usms from the xml files
-
 Then the scripts convert the xml files into txt usms and execute Stics. 
 
 Different results_i.Rdata files are produced for the core number i, each file containing the different variables calculated by Stics for all the usms corresponding to the core number i.
