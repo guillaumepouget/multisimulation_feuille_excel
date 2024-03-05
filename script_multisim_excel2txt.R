@@ -150,7 +150,7 @@ contenu_xml_dir_apres = dir(file.path(rep_multisimu, "xml"))
 diff_xml_dir=setdiff(contenu_xml_dir_apres, contenu_xml_dir_avant)
 file.copy(from = file.path(rep_multisimu, "xml"), to = output_path, recursive = TRUE, overwrite = TRUE)
 
-#save variables used in the next scripts in linux case
+#save variables used in the next scripts (for the linux case)
 save(output_path, diff_xml_dir, file = file.path(rep_multisimu, "variables.Rdata"))
 
 

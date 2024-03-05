@@ -30,7 +30,7 @@ attr(liste_totale$sim_list, "class")= "cropr_simulation"
 
 save(liste_totale, file = file.path(rep_output, "results_final.Rdata"))
 
-#erase all the files in the output directory except the final list "results_final.Rdata"
+#erase all the files in the output directory except the final list "results_final.Rdata" (if option_effacement selected)
 
 if (option_effacement == "oui"){
 
@@ -48,5 +48,6 @@ file.remove(contenu_output_dir_apres, recursive = TRUE)
 
 }
 
+#erase intermediary variables
 setwd(rep_multisimu)
 file.remove("variables.Rdata")
