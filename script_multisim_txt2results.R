@@ -28,7 +28,7 @@ library(SticsOnR)
 #output_path = file.path(rep_multisimu, "output")
 workspace_path = file.path(rep_multisimu, "xml")
 
-liste_usms=get_usms_list(usm_path = file.path(workspace_path, "usms.xml"))
+liste_usms=get_usms_list(file = file.path(workspace_path, "usms.xml"))
 nombre_usms=length(liste_usms)
 
 quotient = nombre_usms %/% ncoeurs
@@ -48,8 +48,8 @@ if (reste == 0){
   
 }
 
-sim_options = stics_wrapper_options(javastics_path = javastics_path, data_dir = file.path(output_path, "usms"), verbose = FALSE)
-results = stics_wrapper(model_options = sim_options, sit_names = liste_usms_interet, var_names = var_names)
+sim_options = stics_wrapper_options(javastics = javastics_path, workspace = file.path(output_path, "usms"), verbose = FALSE)
+results = stics_wrapper(model_options = sim_options, situation = liste_usms_interet, var = var_names)
 
 #return(results)}
 save(results, file = file.path(output_path, paste0("results_",i,".Rdata")))
