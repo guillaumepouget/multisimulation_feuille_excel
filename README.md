@@ -11,6 +11,7 @@ Variables to be defined in the beginning of script_windows.R :
 - javastics_path: the Javastics folder
 - var_names: a vector of variables names for which results must be returned. example: var_names = c("masec_n","mafruit")
 - ncoeurs: number of cores used (ncoeurs = 1 for the moment because the scripts are not parallelized for Windows for the moment)
+- option_effacement: "oui" for deleting the intermediate files produced, "non" for not deleting these files
 - path_scripts : the path that contains all the scripts to be used
 
 Then these scripts use the content of the excel sheet and the templates to produce the xml files necessary for Stics: usms.xml, sols.xml, and the ini, tec, station xml files
