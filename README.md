@@ -1,4 +1,8 @@
 # multisimulation_feuille_excel
+
+DESCRIPTION OF THE WINDOWS USE OF THE R SCRIPTS
+
+The entry variables and functioning of script_windows.R (which uses script_multisim_excel2txt.R, script_multisim_txt2results.R, and script_gather.R)  are described below.
  
 Variables to be defined in the beginning of script_windows.R :
 
@@ -21,4 +25,6 @@ Then the scripts convert the xml files into txt usms and execute Stics.
 Different results_i.Rdata files are produced for the core number i, each file containing the different variables calculated by Stics for all the usms corresponding to the core number i.
 
 Then these different files are put together in one unique results_final.Rdata file, which is stored in the "output" sub directory of rep_multisimu.
+
+A test simulation directory (for Stics V10) is uploaded on the github page (environnement_v10_github.zip). 
 
